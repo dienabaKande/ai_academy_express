@@ -1,0 +1,31 @@
+<h2>Nos Cours</h2>
+<p>Découvrez notre sélection de cours d'intelligence artificielle.</p>
+
+<form method="get" action="/courses">
+  <label for="level">Niveau :</label>
+  <select name="level" id="level">
+    <option value="">Tous</option>
+    <option value="Débutant">Débutant</option>
+    <option value="Intermédiaire">Intermédiaire</option>
+    <option value="Avancé">Avancé</option>
+  </select>
+
+  <label for="maxPrice">Prix max :</label>
+  <input type="number" name="maxPrice" id="maxPrice" min="0">
+
+  <button type="submit">Filtrer</button>
+</form>
+
+<div class="courses-container">
+  <% courses.forEach(course => { %>
+    <div class="course-card">
+      <h3><%= course.title %></h3>
+      <p><%= course.description %></p>
+      <div class="course-details">
+        <span class="price"><%= course.price %> €</span>
+        <span class="level"><%= course.level %></span>
+      </div>
+      <a href="/contact" class="btn">S'inscrire</a>
+    </div>
+  <% }); %>
+</div>

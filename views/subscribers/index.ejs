@@ -1,0 +1,50 @@
+<h2>Liste des abonnés</h2>
+<table class="table">
+<thead>
+<tr>
+<th>Nom</th>
+<th>Email</th>
+<th>Code Postal</th>
+</tr>
+</thead>
+<tbody>
+<% subscribers.forEach(subscriber => { %>
+<tr>
+<td><a href="<%= `/subscribers/${subscriber._id}` %>"><%= subscriber.name %></a></td>
+<td><%= subscriber.email %></td>
+<td><%= subscriber.zipCode %></td>
+</tr>
+<% }); %>
+</tbody>
+</table>
+<a href="/subscribers/new">Créer un nouvel abonné</a>
+views/subscribers/new.ejs :
+<h2>Inscription à la newsletter</h2>
+<form action="/subscribers/create" method="POST">
+<div class="form-group">
+<label for="name">Nom complet</label>
+<input type="text" class="form-control" id="name" name="name" required>
+</div>
+<div class="form-group">
+<label for="email">Email</label>
+<input type="email" class="form-control" id="email" name="email" required>
+</div>
+<div class="form-group">
+<label for="zipCode">Code Postal</label>
+<input type="text" class="form-control" id="zipCode" name="zipCode" pattern="\d{5}"
+required>
+</div>
+<button type="submit" class="btn btn-primary">S'abonner</button>
+</form>
+views/subscribers/show.ejs :
+<h2>Détails de l'abonné</h2>
+<div class="subscriber-details">
+<h3><%= subscriber.name %></h3>
+<p><strong>Email:</strong> <%= subscriber.email %></p>
+<p><strong>Code Postal:</strong> <%= subscriber.zipCode %></p>
+</div>
+<a href="/subscribers" class="btn btn-primary">Retour à la liste</a>
+views/subscribers/thanks.ejs :
+<h2>Merci pour votre inscription!</h2>
+<p>Vous êtes maintenant abonné à notre newsletter.</p>
+<a href="/" class="btn btn-primary">Retour à l'accueil</a>
