@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Academy - <%= pageTitle %></title>
+<title>AI Academy - <%= typeof pageTitle !== 'undefined' ? pageTitle : 'Bienvenue' %></title>
 <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
@@ -13,19 +13,15 @@
 <h1>AI Academy</h1>
 </div>
 <nav>
-<ul>
-<li><a href="/">Accueil</a></li>
-<li><a href="/about">À propos</a></li>
-<li><a href="/courses">Cours</a></li>
-<li><a href="/contact">Contact</a></li>
-
+  <ul>
+  <li><a href="/">Accueil</a></li>
+  <li><a href="/about">À propos</a></li>
+  <li><a href="/courses">Cours</a></li>
+  <li><a href="/users">Utilisateurs</a></li>
   <li><a href="/subscribers">Abonnés</a></li>
-  <li><a href="/subscribers/new">S'abonner</a></li>
-  <li><a href="/faq">FAQ</a></li>
-
-
-</ul>
-</nav>
+  <li><a href="/contact">Contact</a></li>
+  </ul>
+  </nav>
 </header>
 <main>
   <%- body %>
