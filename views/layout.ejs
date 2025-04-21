@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Academy - <%= typeof pageTitle !== 'undefined' ? pageTitle : 'Bienvenue' %></title>
+<title>AI Academy - <%= typeof pageTitle !== 'undefined' ? pageTitle : 'Accueil' %></title>
 <link rel="stylesheet" href="/css/styles.css">
+
 </head>
 <body>
 <header>
@@ -13,23 +14,46 @@
 <h1>AI Academy</h1>
 </div>
 <nav>
-  <ul>
-  <li><a href="/">Accueil</a></li>
-  <li><a href="/about">À propos</a></li>
-  <li><a href="/courses">Cours</a></li>
-  <li><a href="/users">Utilisateurs</a></li>
-  <li><a href="/subscribers">Abonnés</a></li>
-  <li><a href="/contact">Contact</a></li>
-  </ul>
-  </nav>
+<ul>
+<li><a href="/">Accueil</a></li>
+<li><a href="/about">À propos</a></li>
+<li><a href="/courses">Cours</a></li>
+<li><a href="/subscribers">Abonnés</a></li>
+<% if (loggedIn) { %>
+<li><a href="/users">Utilisateurs</a></li>
+<li>
+<a href="/users/<%= currentUser._id %>">
+Mon Profil
+</a>
+</li>
+<li>
+<a href="/logout">Se déconnecter</a>
+</li>
+<% } else { %>
+<li><a href="/login">Se connecter</a></li>
+<li><a href="/signup">S'inscrire</a></li>
+<% } %>
+<li><a href="/contact">Contact</a></li>
+</ul>
+</nav>
 </header>
+<!--Affichage des messages flash -->
+<div class="flashes">
+<% if (flashMessages) { %>
+<% if (flashMessages.success) { %>
+<div class="flash success">
+<%= flashMessages.success %>
+</div>
+<% } else if (flashMessages.error) { %>
+<div class="flash error">
+<%= flashMessages.error %>
+</div>
+<% } %>
+<% } %>
+</div>
+
 <main>
-  <%- body %>
-  <% if (notification) { %>
-    <div class="notification <%= notification.type %>">
-      <p><%= notification.message %></p>
-    </div>
-  <% } %>
+<%- body %>
 </main>
 <footer>
 <p>&copy; <%= new Date().getFullYear() %> AI Academy. Tous droits réservés.</p>

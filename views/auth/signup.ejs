@@ -1,0 +1,41 @@
+<div class="auth-form">
+    <h2>Créer un compte</h2>
+  
+    <% if (flashMessages && flashMessages.error) { %>
+      <div class="flash error"><%= flashMessages.error %></div>
+    <% } %>
+  
+    <form action="/signup" method="POST">
+      <div class="form-group">
+        <label for="inputFirstName">Prénom</label>
+        <input type="text" name="first" id="inputFirstName" class="form-control" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="inputLastName">Nom</label>
+        <input type="text" name="last" id="inputLastName" class="form-control" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="inputEmail">Email</label>
+        <input type="email" name="email" id="inputEmail" class="form-control" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="inputZipCode">Code Postal</label>
+        <input type="text" name="zipCode" id="inputZipCode" class="form-control" pattern="\d{5}" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="inputPassword">Mot de passe</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" required>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">S'inscrire</button>
+    </form>
+  
+    <div class="auth-links">
+      <p>Déjà inscrit ? <a href="/login">Se connecter</a></p>
+    </div>
+  </div>
+  
