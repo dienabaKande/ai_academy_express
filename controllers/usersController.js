@@ -1,4 +1,6 @@
 const User = require("../models/user");
+const jsonWebToken = require("jsonwebtoken");
+const token_key = process.env.TOKEN_KEY || "secretTokenKey";
 
 const getUserParams = body => ({
   name: {
@@ -118,5 +120,32 @@ module.exports = {
         console.log(`Erreur suppression utilisateur: ${error.message}`);
         next(error);
       });
+  },validate: (req, res, next) => {
+    if (!req.body.email || !req.body.password) {
+      req.flash("error", "Email et mot de passe requis.");
+      res.locals.redirect = "/users/new";
+      return next(new Error("Validation échouée"));
+    }
+    next();
+  },  
+
+  getApiToken: (req, res) => {
+    if (req.user) {
+    let signedToken = jsonWebToken.sign(
+    {
+    data: req.user._id,
+    exp: new Date().setDate(new Date().getDate() + 30) // Token valable 30 jours
+    },
+    token_key
+    );
+   
+    res.render("users/api-token", {
+    token: signedToken
+    });
+    } else {
+    req.flash("error", "Vous devez être connecté pour obtenir un token API.");
+    res.redirect("/login");
+    }
   }
+
 };
