@@ -1,0 +1,132 @@
+/* AboutPage.css */
+
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+  }
+  
+  .main-content h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    color: #2c3e50;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+  
+  .main-content h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #9b59b6);
+    border-radius: 2px;
+  }
+  
+  .about-section {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .about-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .about-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #3498db;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  .about-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #9b59b6;
+  }
+  
+  .about-section p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #555;
+  }
+  
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .team-member {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border-left: 4px solid #3498db;
+  }
+  
+  .team-member:hover {
+    background: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .team-member h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  .role {
+    font-weight: 600;
+    color: #9b59b6 !important;
+    margin-bottom: 1rem !important;
+    font-size: 1rem !important;
+  }
+  
+  /* Animation pour le chargement */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .about-section {
+    animation: fadeIn 0.6s ease forwards;
+  }
+  
+  .about-section:nth-child(2) { animation-delay: 0.1s; }
+  .about-section:nth-child(3) { animation-delay: 0.2s; }
+  .about-section:nth-child(4) { animation-delay: 0.3s; }
+  .about-section:nth-child(5) { animation-delay: 0.4s; }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .main-content {
+      padding: 1rem;
+    }
+    
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .about-section {
+      padding: 1.5rem;
+    }
+  }
